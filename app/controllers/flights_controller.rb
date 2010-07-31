@@ -2,7 +2,7 @@ class FlightsController < ApplicationController
   # GET /flights
   # GET /flights.xml
   def index
-    @flights = Flight.all
+    @flights = Flight.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,6 +44,7 @@ class FlightsController < ApplicationController
 
     respond_to do |format|
       if @flight.save
+        flash[:notice] = 'Flight was successfully created.'
         format.html { redirect_to(@flight, :notice => 'Flight was successfully created.') }
         format.xml  { render :xml => @flight, :status => :created, :location => @flight }
       else
@@ -60,6 +61,7 @@ class FlightsController < ApplicationController
 
     respond_to do |format|
       if @flight.update_attributes(params[:flight])
+        flash[:notice] = 'Flight was successfully updated.'
         format.html { redirect_to(@flight, :notice => 'Flight was successfully updated.') }
         format.xml  { head :ok }
       else
