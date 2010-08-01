@@ -4888,3 +4888,61 @@ Processing FlightsController#index (for 127.0.0.1 at 2010-07-31 13:04:27) [GET]
 Rendering template within layouts/flights
 Rendering flights/index
 Completed in 23ms (View: 16, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing FlightsController#show (for 127.0.0.1 at 2010-07-31 16:57:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mFlight Load (0.0ms)[0m   [0mSELECT * FROM "flights" WHERE ("flights"."id" = 1) [0m
+Rendering template within layouts/flights
+Rendering flights/show
+  [4;36;1mSeat Load (0.0ms)[0m   [0;1mSELECT * FROM "seats" WHERE ("seats".flight_id = 1) [0m
+Rendered flights/_seat_list (12.0ms)
+Rendered flights/_new_seats (30.0ms)
+Completed in 59ms (View: 51, DB: 0) | 200 OK [http://localhost/flights/1]
+
+
+Processing SeatsController#create (for 127.0.0.1 at 2010-07-31 16:57:55) [POST]
+  Parameters: {"commit"=>"create", "authenticity_token"=>"Pz0bJmFPI/1iibnBXU3T6xCyrVfDzInBwck8p+hpAbw=", "seat"=>{"name"=>"Bobby", "flight_id"=>"1", "baggage"=>"5"}}
+  [4;35;1mFlight Load (0.0ms)[0m   [0mSELECT * FROM "flights" WHERE ("flights"."id" = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "seats" WHERE ("seats".flight_id = 1) [0m
+  [4;35;1mSeat Create (1.0ms)[0m   [0mINSERT INTO "seats" ("name", "flight_id", "created_at", "baggage", "updated_at") VALUES('Bobby', 1, '2010-07-31 23:57:55', 5.0, '2010-07-31 23:57:55')[0m
+Redirected to http://localhost:3000/seats/22
+Completed in 220ms (DB: 1) | 302 Found [http://localhost/seats]
+
+
+Processing SeatsController#show (for 127.0.0.1 at 2010-07-31 16:57:55) [GET]
+  Parameters: {"id"=>"22"}
+  [4;36;1mSeat Load (1.0ms)[0m   [0;1mSELECT * FROM "seats" WHERE ("seats"."id" = 22) [0m
+Rendering template within layouts/seats
+Rendering seats/show
+Completed in 12ms (View: 3, DB: 1) | 200 OK [http://localhost/seats/22]
+
+
+Processing SeatsController#show (for 127.0.0.1 at 2010-07-31 16:59:12) [GET]
+  Parameters: {"id"=>"22"}
+  [4;35;1mSeat Load (0.0ms)[0m   [0mSELECT * FROM "seats" WHERE ("seats"."id" = 22) [0m
+Rendering template within layouts/seats
+Rendering seats/show
+Completed in 16ms (View: 8, DB: 0) | 200 OK [http://localhost/seats/22]
+
+
+Processing SeatsController#show (for 127.0.0.1 at 2010-07-31 16:59:16) [GET]
+  Parameters: {"id"=>"22"}
+  [4;36;1mSeat Load (0.0ms)[0m   [0;1mSELECT * FROM "seats" WHERE ("seats"."id" = 22) [0m
+Rendering template within layouts/seats
+Rendering seats/show
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://localhost/seats/22]
+
+
+Processing FlightsController#index (for 127.0.0.1 at 2010-07-31 16:59:18) [GET]
+  [4;35;1mFlight Load (2.0ms)[0m   [0mSELECT * FROM "flights" [0m
+Rendering template within layouts/flights
+Rendering flights/index
+Completed in 25ms (View: 14, DB: 2) | 200 OK [http://localhost/flights]
+
+
+Processing FlightsController#index (for 127.0.0.1 at 2010-07-31 17:18:57) [GET]
+  [4;36;1mFlight Load (1.0ms)[0m   [0;1mSELECT * FROM "flights" [0m
+Rendering template within layouts/flights
+Rendering flights/index
+Completed in 30ms (View: 21, DB: 1) | 200 OK [http://localhost/flights]

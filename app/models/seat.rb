@@ -6,7 +6,7 @@ belongs_to :flight
 		end
 		
 		if flight.seats.size >= flight.capacity
-			errors.add_to_base ("flight full")
+			errors.add_to_base ("I'm sorry, that flight is  full")
 		end
 	end
 end

@@ -1,8 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :seats
 
+  map.connect '/flights':flight_id/seats', :controller=>'seats'
   map.resources :flights
   map.root :controller => "flights";
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
 
