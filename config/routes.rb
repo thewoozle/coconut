@@ -1,10 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.connect '/flights/:flight_id/seats', :action=>'flight_seats', :controller=>'seats'
   map.resources :seats
 
-  map.connect '/flights':flight_id/seats', :controller=>'seats'
   map.resources :flights
-  map.root :controller => "flights";
-  
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -44,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing or commenting them out if you're using named routes and resources.
+  # consider removing the them or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

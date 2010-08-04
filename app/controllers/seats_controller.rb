@@ -41,15 +41,14 @@ class SeatsController < ApplicationController
   # POST /seats.xml
   def create
     @seat = Seat.new(params[:seat])
-
-    respond_to do |format|
+    render :update do |page|
       if @seat.save
-        format.html { redirect_to(@seat, :notice => 'Seat was successfully created.') }
-        format.xml  { render :xml => @seat, :status => :created, :location => @seat }
+        page.replace_html 'notice', 'Seat was successfully booked'
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @seat.errors, :status => :unprocessable_entity }
+        page.replace_html 'notice', 'Sorry - the seat could not be booked'
       end
+      page.replace_html 'seats', :partial => 'flights/seat_list',
+        :locals => {:seats =>  @seat.flight.seats }
     end
   end
 
@@ -60,7 +59,8 @@ class SeatsController < ApplicationController
 
     respond_to do |format|
       if @seat.update_attributes(params[:seat])
-        format.html { redirect_to(@seat, :notice => 'Seat was successfully updated.') }
+        flash[:notice] = 'Seat was successfully updated.'
+        format.html { redirect_to(@seat) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -79,5 +79,10 @@ class SeatsController < ApplicationController
       format.html { redirect_to(seats_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def flight_seats
+    @flight = Flight.find(params[:flight_id])
+    render :partial=>"flights/seat_list", :locals=>{:seats=>@flight.seats}
   end
 end

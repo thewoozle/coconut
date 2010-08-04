@@ -1,15 +1,18 @@
 <h1>New Seat</h1>
-<% form_for(seat) do |f| %>
+<% remote_form_for(seat, :update=>'seats') do |f| %>
 	<%= f.error_messages %>
 	<%= f.hidden_field :flight_id %>
 	
-	<p>	<%= f.label :name %><br />
-		<%= f.text_field :name %>
+	<p>	
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>	
 	</p>
-	<p>	<%= f.label :baggage %><br />
+	<p>	
+		<%= f.label :baggage %><br />
 		<%= f.text_field :baggage %>
 	</p>
-	<p>	<%= f.submit "create" %>
+	<p>	
+		<%= f.submit "create" %>
 	</p>
 
 <% end %> 

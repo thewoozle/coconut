@@ -7,7 +7,7 @@
     <th>Baggage</th>
   </tr>
 
-<% @seats.each do |seat| %>
+<% for seat in @seats %>
   <tr>
     <td><%=h seat.flight_id %></td>
     <td><%=h seat.name %></td>

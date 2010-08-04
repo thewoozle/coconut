@@ -1,4 +1,4 @@
-<h1>Flights Today</h1>
+<h1>Listing flights</h1>
 
 <table>
   <tr>
@@ -9,7 +9,7 @@
     <th>Capacity</th>
   </tr>
 
-<% @flights.each do |flight| %>
+<% for flight in @flights %>
   <tr>
     <td><%=h flight.departure %></td>
     <td><%=h flight.arrival %></td>

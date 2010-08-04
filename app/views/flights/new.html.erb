@@ -5,11 +5,11 @@
 
   <p>
     <%= f.label :departure %><br />
-    <%= f.date_select :departure %>
+    <%= f.datetime_select :departure %>
   </p>
   <p>
     <%= f.label :arrival %><br />
-    <%= f.date_select :arrival %>
+    <%= f.datetime_select :arrival %>
   </p>
   <p>
     <%= f.label :destination %><br />
@@ -24,7 +24,7 @@
     <%= f.text_field :capacity %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit "Create" %>
   </p>
 <% end %>
 

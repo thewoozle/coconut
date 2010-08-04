@@ -45,7 +45,7 @@ class FlightsController < ApplicationController
     respond_to do |format|
       if @flight.save
         flash[:notice] = 'Flight was successfully created.'
-        format.html { redirect_to(@flight, :notice => 'Flight was successfully created.') }
+        format.html { redirect_to(@flight) }
         format.xml  { render :xml => @flight, :status => :created, :location => @flight }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class FlightsController < ApplicationController
     respond_to do |format|
       if @flight.update_attributes(params[:flight])
         flash[:notice] = 'Flight was successfully updated.'
-        format.html { redirect_to(@flight, :notice => 'Flight was successfully updated.') }
+        format.html { redirect_to(@flight) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

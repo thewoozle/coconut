@@ -1,18 +1,18 @@
 require 'test_helper'
 
 class FlightsControllerTest < ActionController::TestCase
-  test "should get index" do
+  def test_should_get_index
     get :index
     assert_response :success
     assert_not_nil assigns(:flights)
   end
 
-  test "should get new" do
+  def test_should_get_new
     get :new
     assert_response :success
   end
 
-  test "should create flight" do
+  def test_should_create_flight
     assert_difference('Flight.count') do
       post :create, :flight => { }
     end
@@ -20,24 +20,24 @@ class FlightsControllerTest < ActionController::TestCase
     assert_redirected_to flight_path(assigns(:flight))
   end
 
-  test "should show flight" do
-    get :show, :id => flights(:one).to_param
+  def test_should_show_flight
+    get :show, :id => flights(:one).id
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, :id => flights(:one).to_param
+  def test_should_get_edit
+    get :edit, :id => flights(:one).id
     assert_response :success
   end
 
-  test "should update flight" do
-    put :update, :id => flights(:one).to_param, :flight => { }
+  def test_should_update_flight
+    put :update, :id => flights(:one).id, :flight => { }
     assert_redirected_to flight_path(assigns(:flight))
   end
 
-  test "should destroy flight" do
+  def test_should_destroy_flight
     assert_difference('Flight.count', -1) do
-      delete :destroy, :id => flights(:one).to_param
+      delete :destroy, :id => flights(:one).id
     end
 
     assert_redirected_to flights_path

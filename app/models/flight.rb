@@ -1,3 +1,3 @@
 class Flight < ActiveRecord::Base
-	has_many :seats
+  has_many :seats
 end
